@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link href="../css/mui.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <script src="../js/jquery-3.4.1.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+
+    </head>
+
+    <body style="background-image: url(../img/5.jpg);">
+
+        <header class="mui-bar mui-bar-nav">
+            <h1 class="mui-title">远程浇花系统的设计与实现</h1>
+            <span
+                onclick="javascript:window.location.href='login.html'"
+                class="mui-icon mui-icon-locked mui-pull-right"></span>
+        </header>
+
+        <div style=" margin-top: 80px;"></div>
+
+        <div class="mui-row">
+            <div class="mui-col-sm-6 mui-col-xs-12">
+                <div class="container">
+                    <div class="jumbotron">
+                        <!-- <h1>账户管理</h1> -->
+                        <p>用户管理</p>
+                        <p>
+                            <a
+                                class="btn btn-primary btn-lg"
+                                role="button"
+                                onclick="javascript:window.location.href='./user_manage.html'">
+                                用户管理</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-col-sm-6 mui-col-xs-12">
+                <div class="container">
+                    <div class="jumbotron">
+                        <!-- <h1>设备监控</h1> -->
+                        <p>传感器管理</p>
+                        <p>
+                            <a
+                                class="btn btn-primary btn-lg"
+                                role="button"
+                                onclick="javascript:window.location.href='./sensor_manage.html'">
+                                设备管理</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mui-row">
+            <div class="mui-col-sm-6 mui-col-xs-12">
+                <div class="container">
+                    <div class="jumbotron">
+                        <!-- <h1>设备监控</h1> -->
+                        <p>环境监控及传感器操作</p>
+                        <p>
+                            <a
+                                class="btn btn-primary btn-lg"
+                                role="button"
+                                onclick="javascript:window.location.href='./sensor_monitor.html'">
+                                环境管控</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-col-sm-6 mui-col-xs-12">
+                <div class="container">
+                    <div class="jumbotron">
+                        <!-- <h1>环境监测</h1> -->
+                        <p>查看传感器历史数据</p>
+                        <p>
+                            <a
+                                class="btn btn-primary btn-lg"
+                                role="button"
+                                onclick="javascript:window.location.href='./sensor_history.html'">
+                                历史数据</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mui-bar mui-bar-tab" href="">
+            <a class="mui-tab-item" href="sensor_monitor.html">
+                <div><img src="../img/实时数据监控.png" alt="sensor_monitor.html" width="20" height="20"></div>
+                <span>数据监控</span>
+            </a>
+            <a class="mui-tab-item" href="sensor_manage.html">
+                <div><img src="../img/传感器.png" alt="sensor_manage.html" width="20" height="20"></div>
+                <span>传感器管理</span>
+            </a>
+            
+            <a class="mui-tab-item" href="sensor_history.html">
+                <div><img src="../img/历史数据管理.png" alt="sensor_history" width="20" height="20"></div> 
+                <span>历史数据</span>
+            </a>
+            <a id="defaultTab" class="mui-tab-item" href="user_manage.html">
+                <div>
+                    <img src="../img/用户中心.png" alt="user_manage.html" width="20" height="20">
+                </div>
+                <span>用户中心</span>
+            </a>
+        </nav>
+    </body>
+
+</html>

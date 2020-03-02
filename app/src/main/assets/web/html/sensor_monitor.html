@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+    <style>
+        /* 		body {
+			font: 14px/1.4 Georgia, Serif; 
+		} */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <!-- import CSS -->
+
+        <link href="../css/mui.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../js/element-ui/theme-chalk/index.css">
+
+    </head>
+
+    <body style="background: #EFEFF4;">
+
+        <div id="app" v-cloak="v-cloak">
+
+            <el-row>
+                <el-col :span="4">
+                    <el-button
+                        type="primary"
+                        icon="el-icon-back"
+                        circle="circle"
+                        onclick="javascript:window.location.href='./main.html'"></el-button>
+                </el-col>
+                <el-col :span="16">
+                    <h1 style="text-align: center;">环境数据及传感器控制</h1>
+                </el-col>
+
+            </el-row>
+
+            <el-card class="box-card" style="margin-top: 40px;">
+             <!-- <div slot="header" class="clearfix" style="text-align: center;">
+                <span>传感器监测</span> </div> -->
+                <div>
+                    <div v-for="item in value">
+                        <div v-if="item.sensor_role=='label'">
+
+                            <el-row style="  ;margin: 10px 10px;padding: 8px 8px;">
+                                <el-col :span="8">
+                                    <div class="grid-content bg-purple" style="text-align: right;">{{item.sensor_name}}</div>
+                                </el-col>
+                                <el-col :span="8">
+                                    <div class="grid-content bg-purple-light" style="text-align: center;">{{item.sensor_value}}</div>
+                                </el-col>
+                                <el-col :span="8">
+                                    <div class="grid-content bg-purple-light" style="text-align: left;">{{item.sensor_note}}</div>
+                                </el-col>
+                            </el-row>
+                        </div>
+                    </div>
+                </div>
+            </el-card>
+            
+            <el-card class="box-card" style="margin-top: 40px;">
+                <!-- <div slot="header" class="clearfix" style="text-align: center;">
+                <span>传感器控制</span> </div> -->
+                <div v-for="item in value">
+                    <div v-if="item.sensor_role=='slider'">
+                        <el-row style="  ;margin: 10px 10px;padding: 8px 8px;">
+                            <el-col :span="4">
+                                <div class="grid-content bg-purple" style="text-align: left;margin-top: 10px;">{{item.sensor_name}}</div>
+                            </el-col>
+                            <el-col :span="20">
+                                <el-slider v-model.string-set="item.sensor_value" @change="source_change(item)"></el-slider>
+                            </el-col>
+                        </el-row>
+                    </div>
+                </div>
+
+                <!-- <div slot="header" class="clearfix" style="text-align: center;">
+                <span>传感器控制</span> </div> -->
+                <div v-for="item in value">
+                    <div v-if="item.sensor_role=='switch'">
+
+                        <el-row style="  ;margin: 10px 10px;padding: 10px 10px;">
+                            <el-col :span="16">
+                                <div class="grid-content bg-purple" style="text-align: left;">{{item.sensor_name}}</div>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-switch
+                                    v-model="item.sensor_value"
+                                    active-color="#ff4"
+                                    inactive-color="#949"
+                                    active-value="on"
+                                    @change="source_change(item)"
+                                    inactive-value="off"></el-switch>
+                            </el-col>
+                        </el-row>
+                    </div>
+                </div>
+
+                <!-- <div slot="header" class="clearfix" style="text-align: center;">
+                <span>阈值设定</span> </div> -->
+                <div v-for="item in value">
+                    <div v-if="item.sensor_role=='number'">
+
+                        <el-row style="  ;margin: 10px 10px;padding: 10px 10px;">
+                            <el-col :span="10">
+                                <div class="grid-content bg-purple" style="text-align: left;margin-top: 10px;">{{item.sensor_name}}</div>
+                            </el-col>
+                            <el-col :span="14">
+                                <el-input-number
+                                    v-model="item.sensor_value"
+                                    @change="source_change(item)"
+                                    :min="1"
+                                    :max="100"></el-input-number>
+                            </el-col>
+
+                        </el-row>
+
+                    </div>
+                </div>
+            </el-card>
+
+            <div style="margin-bottom: 60px;"></div>
+
+        </div>
+
+    </body>
+        <nav class="mui-bar mui-bar-tab" href="">
+                <a class="mui-tab-item" href="sensor_monitor.html">
+                    <div><img src="../img/实时数据监控.png" alt="sensor_monitor.html" width="20" height="20"></div>
+                    <span>数据监控</span>
+                </a>
+                <a class="mui-tab-item" href="sensor_manage.html">
+                    <div><img src="../img/传感器.png" alt="sensor_manage.html" width="20" height="20"></div>
+                    <span>传感器管理</span>
+                </a>
+                
+                <a class="mui-tab-item" href="sensor_history.html">
+                    <div><img src="../img/历史数据管理.png" alt="sensor_history" width="20" height="20"></div> 
+                    <span>历史数据</span>
+                </a>
+                <a id="defaultTab" class="mui-tab-item" href="user_manage.html">
+                    <div>
+                        <img src="../img/用户中心.png" alt="user_manage.html" width="20" height="20">
+                    </div>
+                    <span>用户中心</span>
+                </a>
+            </nav>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/element-ui/index.js"></script>
+    <script src="../js/project_config.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        console.log(cfg_sensor_url);
+
+        function request_option(option, data, callback) {
+
+            var delete_url = cfg_sensor_url;
+
+            delete_url = delete_url + "?option=" + option + "&data=" + JSON.stringify(data);
+
+            console.log(delete_url);
+
+            $.ajax({
+                type: 'get',
+                dataType: "json",
+                url: delete_url,
+                success: function (data) {
+                    callback(data);
+                }
+            });
+        }
+
+        function analyse_frame(context, data) {
+
+            var warning_msg = "";
+            var flag_is_need_msg = false;
+
+            for (let item of data) {
+
+                if (item.sensor_type == "wendu1") {
+                    if (item.sensor_value > 33) {
+                        warning_msg = warning_msg + "温度过高";
+
+                        flag_is_need_msg = true;
+                    }
+                } else if (item.sensor_type == "huoyan1") {
+                    if (item.sensor_value > 0) {
+                        warning_msg = warning_msg + " 火焰预警";
+
+                        flag_is_need_msg = true;
+                    }
+                }
+
+            }
+
+            if (flag_is_need_msg) {
+                context.$message({message: warning_msg, type: 'warning', center: true});
+            }
+
+        }
+
+        new Vue({
+            el: '#app',
+            data: {
+                value: [] //add default value here
+            },
+            methods: {
+
+                source_change(item) {
+
+                    // console.log(JSON.stringify(item));
+
+                    _self = this;
+
+                    request_option("update", item, function (data) {
+
+                        _self.show_source(data);
+
+                    });
+
+                },
+
+                show_source(data) {
+                    value_temp = [];
+
+                    for (let item of data) {
+
+                        console.log(JSON.stringify(data));
+
+                        if (item.sensor_role == "slider") {
+                            var temp_slider = {
+                                sensor_name: "",
+                                sensor_type: "",
+                                sensor_value: 0,
+                                sensor_role: ""
+                            };
+
+                            temp_slider.sensor_type = item.sensor_type;
+                            temp_slider.sensor_name = item.sensor_name;
+                            temp_slider.sensor_role = item.sensor_role;
+                            temp_slider.sensor_value = parseInt(item.sensor_value);
+
+                            value_temp.push(temp_slider);
+
+                        } else {
+                            value_temp.push(item);
+
+                        }
+
+                    }
+
+                    this.value = value_temp;
+
+                    analyse_frame(this, data);
+
+                },
+
+                refresh() {
+
+                    _self = this;
+
+                    request_option("select", " ", function (data) {
+
+                        _self.show_source(data);
+                    });
+
+                }
+
+            },
+            created() {
+
+                this.show_source(this.value);
+
+                this.refresh();
+                timer_request = setInterval(this.refresh, 2000);
+
+            }
+
+        })
+    </script>
+
+</html>
